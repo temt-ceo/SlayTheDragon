@@ -1,0 +1,16 @@
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: #060810;
+  color: #fff;
+  font-family: ui-monospace, monospace;
+}
+
+#app {
+  width: 100%;
+  min-height: 100svh;
+}

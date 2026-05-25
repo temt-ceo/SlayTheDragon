@@ -1,0 +1,11 @@
+localhost {
+    # Reverse proxy for WebSocket endpoints
+    reverse_proxy /ws/* backend:8080
+    reverse_proxy /ws backend:8080
+
+    # Proxy to your Go backend
+    reverse_proxy /game/* backend:8080
+
+    # Proxy to your Svelte frontend
+    reverse_proxy frontend:5173
+}

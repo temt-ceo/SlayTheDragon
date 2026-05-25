@@ -1,0 +1,14 @@
+
+> frontend@0.0.0 dev
+> vite --host 0.0.0.0
+
+[38;5;206m[Routify 3][0m [1mbuild completed (21 ms)[0m
+
+  VITE v8.0.12  ready in 569 ms
+
+  ➜  Local:   http://localhost:5173/
+  ➜  Network: http://192.168.3.2:5173/
+  ➜  Network: http://192.168.64.1:5173/
+20:21:01 [vite] (client) hmr update /src/App.svelte, /src/lib/Game.svelte
+[38;5;206m[Routify 3][0m rebuild triggered by src/routes/battle.svelte (created) (47 ms)
+20:47:46 [vite] (client) hmr update /src/RouterWrapper.svelte

@@ -1,0 +1,50 @@
+services:
+  backend:
+    build: ./backend
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./backend:/app   # Hot-reload Go
+    environment:
+      - DATABASE_URL=postgres://slaygame:slaygame@db:5432/slaythedrgon?sslmode=disable
+      - REDIS_URL=redis:6379
+    depends_on:
+      - db
+      - redis
+
+  frontend:
+    build: ./frontend
+    ports:
+      - "5173:5173"
+    volumes:
+      - ./frontend:/app   # Hot-reload Svelte
+      - /app/node_modules # Ignore node_modules
+
+  caddy:
+    image: caddy:latest
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile
+      - caddy_data:/data
+
+  db:
+    image: postgres:18-alpine
+    environment:
+      - POSTGRES_USER=slaygame
+      - POSTGRES_PASSWORD=slaygame
+      - POSTGRES_DB=slaythedrgon
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+
+  redis:
+    image: redis:8-alpine
+    ports:
+      - "6379:6379"
+
+volumes:
+  caddy_data:
+  postgres_data:
